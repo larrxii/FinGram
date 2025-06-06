@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FinGram</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @* <link rel="stylesheet" href="~/FinGram.styles.css" asp-append-version="true" /> *@
+</head>
+<body>
+    <div class="page-wrapper">
+        <header class="header-container">
+                    <div class="logo">
+                        <a href="/">FinGram</a>
+                    </div>
+                    <nav>
+                        <ul>
+                            <li class="active"><a href="/">главная</a></li>
+                            <li><a href="/Course">мое обучение</a></li>
+                       
+                        <li class="btn" id="openAuthForm">личный кабинет</li>
+                    </ul>
+                </nav>  
+        </header>
+
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+        
+        <div class="footer">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <a href="/">FinGram</a>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Telegram</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay" style="display: none"></div>
+
+    <div class="registration-cssave" id="authModal" style="display: none">
+        <form id="authForm">
+            <div class="close-container">
+                <button class="close" type="button" id="authClose">×</button>
+            </div>
+            <h3 class="text-center" style="color:black">Авторизация</h3>
+            <div class="form-group">
+                <input class="form-control item"
+                       type="text"
+                       name="username"
+                       maxlength="15"
+                       minlength="4"
+                       pattern="^[a-zA-Z0-9_.-]*$"
+                       id="username"
+                       placeholder="Логин"
+                       required />
+            </div>
+            <div class="form-group">
+                <input class="form-control item"
+                       type="password"
+                       name="password"
+                       minlength="6"
+                       id="password"
+                       placeholder="Пароль"
+                       required />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block log-in" type="submit">
+                    Войти в аккаунт
+                </button>
+            </div>
+            <p>Нет аккаунта?</p>
+            <a href="#" id="registerLink">Зарегистрируйтесь здесь</a>
+        </form>
+    </div>
+
+    <div class="registration-cssave" id="regModal" style="display: none">
+        <form id="regForm" method="post">
+            <div class="close-container">
+                <button class="close" type="button" id="regClose">×</button>
+            </div>
+            <h3 class="text-center" style="color:black">Регистрация</h3>
+            <div class="form-group">
+                <input class="form-control item"
+                       type="text"
+                       name="first_name"
+                       maxlength="30"
+                       placeholder="Имя"
+                       required />
+            </div>
+            <div class="form-group">
+                <input class="form-control item"
+                       type="text"
+                       name="surname"
+                       maxlength="30"
+                       placeholder="Фамилия"
+                       required />
+            </div>
+            <div class="form-group">
+                <input class="form-control item"
+                       type="date"
+                       name="birthday" />
+            </div>
+            <div class="form-group">
+                <input class="form-control item"
+                       type="text"
+                       name="new_login"
+                       maxlength="15"
+                       minlength="4"
+                       pattern="^[a-zA-Z0-9_.-]*$"
+                       id="newusername"
+                       placeholder="Логин"
+                       required />
+            </div>
+            <div class="form-group">
+                <input class="form-control item"
+                       type="password"
+                       name="new_password"
+                       minlength="6"
+                       id="newpassword"
+                       placeholder="Пароль"
+                       required />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block sign-up" type="submit">
+                    Зарегистрироваться
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/auth-modal.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
