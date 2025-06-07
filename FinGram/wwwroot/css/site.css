@@ -100,8 +100,7 @@ header nav{
             }
 
             header nav ul li:not(.active):hover {
-                border-bottom: 3px solid #C8F55A;
-                border-radius: 4px;
+                border-bottom: 3px solid #000000;
                 transition: all 200ms ease;
             }
 
@@ -167,9 +166,9 @@ span {
 }
 
 .subtitle {
-    font-size: 1.2em;
+    font-size: 1.0em;
     color: black;
-    margin: 5px 0 0 0; 
+    margin: 10px 0 0 0; 
     text-align: left;
 }
 .hero-container p{
@@ -188,7 +187,7 @@ span {
     display: flex;
     flex-wrap:wrap;
     flex-direction: row;
-    gap: 20px;
+    gap: 200px;
     margin: 20px 0;
     align-items: flex-start;
 }
@@ -207,36 +206,52 @@ span {
 }
 
     .content-block.left {
-        width: 630px;
+        width: 500px;
         background: #F1F2F6;
         color: black;
+    }
+    
+    .content-block.left h2 {
+        font-size: 25px;
+        margin-top: 0;
+    }
+
+    .content-block.left p {
+        font-size: 20px;  
+        margin-top: 0px;
     }
 
     .content-block.right {
         background: #4A6FFE;
         flex: 1;
-        min-width: 300px;
+        width: 500px;
     }
 
-    .content-block h2 {
-        font-size: 23px;
+
+    .content-block.right h2 {
+        font-size: 25px;
         margin-top: 0;
     }
+
+    .content-block.right p {
+        font-size: 20px;
+        margin-top: 0px;
+    }
+
 
 .course-devs {
     display: flex;
     align-items: center;
-
 }
 
     .course-devs .img {
-
-        margin: 20px;
-        max-width: 100%;
+        margin: 0px;
+        width: 60px;
     }
 
     .course-devs p {
         margin: 20px;
+        font-size: 18px;
     }
 
 
