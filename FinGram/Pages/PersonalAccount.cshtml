@@ -1,0 +1,44 @@
+﻿@page
+@model FinGram.Pages.PersonalAccountModel
+@{
+	ViewData["Title"] = "Личный кабинет";
+}
+<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+<div class="personal-account first">
+	<!--
+		<h2>Model.FirstName</h2>
+		<p>Model.FinGramUser</p>
+	-->
+	<img src="~/images/user.svg" alt="user-img">
+	<div class="user-info">
+		<h2>Аня, 19 лет </h2>
+		<p>anyutablokhina@gmail.com</p>
+	</div>
+	<div class="button-row">
+		<button class="btn-edit">Редактировать профиль</button>
+		<button class="btn-logout">Выйти</button>
+	</div>
+</div>
+
+<div class="personal-account second">
+	<div class="personal-account statistic">
+		<h1>Моя статистика</h1>
+		<p>
+			Время на платформе: <br>
+			Уроков пройдено: <br>
+			Средний бал: 
+		</p>
+	</div>
+
+	<div class="personal-account notice">
+		<h1>Подключите уведомления в Telegram</h1>
+		<p>Получайте сообщения о новых уроках удобным способом.</p>
+		<button class="btn-connectnotice">Подключить уведомления</button>
+	</div>
+</div>
+
+<div class="container-btn-feedback">
+	<button class="btn-feedback">Оставить отзыв о курсе</button>
+</div>
+
