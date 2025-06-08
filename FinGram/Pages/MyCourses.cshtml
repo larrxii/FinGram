@@ -1,0 +1,59 @@
+﻿@page
+@model FinGram.Pages.MyCoursesModel
+@{
+    ViewData["Title"] = "Моё обучение";
+}
+<link href="https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Jost&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Grotesk:wght@300..700&family=Unbounded&display=swap" rel="stylesheet">
+
+
+<div class="my-courses-container">
+    <h1>Мое обучение</h1>
+    <div class="my-courses-content">
+
+        <div class="statistics-card left">
+            <h1>Финансовая грамотность для всех</h1>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width:60%;"></div>
+            </div>
+
+            <p style="margin-bottom: 4px;">6% материалов пройдено</p>
+            <p style="margin-top: 0;">6/100 баллов получено</p>
+             <!--
+			 <p>ProgressPercent% материалов пройдено</p>
+			 <p>CurrentPoints/MaxPoints баллов получено</p>
+             -->
+            <p class ="last">Осталось 67 баллов<br>до сертификата</p>
+			<!--<p>Осталось MaxPoints-CurrentPoints баллов до сертификата</p>-->
+            <a asp-page="/MyLessons" class="btn-continue">Продолжить</a>
+        </div>
+
+        <div class="statistics-card right">
+            <p class="first">2 дня без перерыва</p>
+            <p class="second">Рекорд — 5 дней</p>
+
+            <div class="row-text">
+                <p>
+                    <span class="highlight-number">22</span>задач решено
+                    <span class="highlight-number second">31</span>задач осталась
+                </p>
+            </div>
+
+            <div class="task-reminder">
+				<img src="~/images/star.png" alt="star-img">
+                <p>Решите сегодня хотя бы одну задачу</p>
+            </div>
+            
+            <!--
+			<p><strong>Model.DaysInARow</strong> дня без перерыва</p>
+			<p>Рекорд — <strong>Model.BestStreak</strong> дней</p>
+			<p><strong>Model.TasksSolved</strong> задач решено</p>
+			<p><strong>Model.TasksRemaining</strong> задача осталась</p>
+            -->  
+        </div>
+	</div>
+
+    <div class="motivation-text">
+		<h1>Некий вдохновляющий текст, который надо придумать</h1>
+	</div>
+</div>

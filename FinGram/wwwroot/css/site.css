@@ -45,6 +45,7 @@ body {
 }
 
 .container {
+    flex:1;
     z-index: 1;
     padding: 20px;
     max-width: 1200px;
@@ -115,7 +116,7 @@ header .logo {
 
 .logo a {
     font-family: "Space Grotesk", sans-serif;
-    font-size: 48px;
+    font-size: 50px;
     font-weight: 700;
     color: black;
     text-decoration: none;
@@ -194,9 +195,6 @@ span {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
-/*    float: right;
-    text-align: right;
-    padding-top: 30px;*/
 }
 
 .content-sections {
@@ -394,4 +392,176 @@ span {
 
     .footer-links a:hover {
         text-decoration: underline;
+    }
+
+/* MyCourses */
+.my-courses-content {
+    display: flex;
+    justify-content: space-around;
+    gap: 100px;
+    margin-top:30px;
+}
+
+.my-courses-container h1 {
+    font-family: "Raleway", sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+    color: black;
+    text-decoration: none;
+}
+
+.statistics-card.left {
+    /*    font-family: "Raleway", sans-serif;
+    font-size: 25px;
+    font-weight: 400;*/
+    width: 500px;
+    height: 200px;
+    background-color: #F1F2F6;
+    border-radius: 35px;
+    padding: 20px;
+    display: inline-block;
+    position: relative;
+}
+
+    .progress-bar {
+        width: 483px;
+        height: 9px;
+        background-color: #FFFFFF;
+        border-radius: 30px;
+        overflow: hidden;
+        margin-top: 10px;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background-color: #C8F55A; 
+        width: 0%; 
+        transition: width 0.4s ease-in-out;
+    }
+
+    .statistics-card.left p {
+        font-size: 19px;
+        font-weight: 400;
+        color: black;
+        text-decoration: none;
+    }
+
+        .statistics-card.left p.last {
+            position: absolute;
+            right: 20px;
+            bottom: -10px;
+            font-size: 19px;
+            font-weight: 400;
+        }
+
+    .statistics-card.left h1 {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 28px;
+        font-weight: 600;
+        color: black;
+        text-decoration: none;
+    }
+
+    .btn-continue {
+        display: inline-block;
+        color: white;
+        background-color: #4A6FFE;
+        border-radius: 35px;
+        width: 170px;
+        height: 45px;
+        font-family: "Raleway", sans-serif;
+        font-size: 21px;
+        font-weight: 500;
+        text-align: center;
+        line-height: 45px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+    }
+
+.statistics-card.right {
+    width: 500px;
+    height: 200px;
+    background-color: #F1F2F6;
+    border-radius: 35px;
+    padding: 20px;
+/*    display: inline-block;*/
+    position: relative;
+/*    display: flex;*/
+}
+    .statistics-card.right p {
+        font-size: 20px;
+    }
+
+    .statistics-card.right p.first {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 28px;
+        font-weight: 600;
+        color: black;
+        text-decoration: none;
+        margin-bottom: 4px;
+        margin-top: 18px;
+    }
+
+    .statistics-card.right p.second {
+        font-family: "Raleway", sans-serif;
+        font-size: 20px;
+        font-weight: 400;
+        color: black;
+        text-decoration: none;
+        margin-bottom: 4px;
+        margin-top: 0;
+    }
+
+    .row-text {
+        display: flex;
+        justify-content: space-evenly;
+        font-size: 20px;
+        margin-left: -150px;
+    }
+
+        .highlight-number {
+            font-size: 21px;
+            font-weight: 600;
+            background-color: #C8F55A;
+            padding: 4px 8px;
+            border-radius: 55px;
+        }
+
+        .highlight-number.second {
+            font-size: 21px;
+            font-weight: 600;
+            background-color: #C8F55A;
+            padding: 4px 8px;
+            border-radius: 55px;
+        }
+
+    .task-reminder {
+        display: flex;
+        align-items: center; 
+        gap: 10px; 
+    }
+        .task-reminder img {
+            width: 40px; 
+            height: 40px;
+        }
+.motivation-text {
+    width: 1120px;
+    height: 70px;
+    background-color: #4A6FFE;
+    border-radius: 35px;
+
+    flex-shrink: 0;
+    flex-grow: 1;
+    margin-top: 40px;
+    padding: 20px;
+}
+
+    .motivation-text h1 {
+        font-family: "Space Grotesk", sans-serif;
+        color: white;
+        font-size: 35px;
+        font-weight: 600;
+        text-align: center;
+        margin-top: 13px;
     }
