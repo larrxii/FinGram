@@ -1,4 +1,4 @@
-using FinGram.Models;
+using FinGram.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
