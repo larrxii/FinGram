@@ -1,63 +1,100 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FinGram.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
-namespace FinGram.Models
+namespace FinGram.Data
 {
-    public class FinGramUser
+    public class AppDbContext : IdentityDbContext
     {
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public DateTime? BirthDate { get; set; }
-        public string? Country { get; set; } // Обязательное поле
-        public string Login { get; set; }
-        public string UserPasswordHash { get; set; }
-    }
-
-    public class AppDbContext : DbContext
-    {
-        public DbSet<FinGramUser> FinGramUsers { get; set; }
-
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        public AppDbContext(DbContextOptions <AppDbContext> options) : base(options)
         {
+
         }
+
+        public DbSet<User> Users { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Lesson> Lessons { get; set; }
+        public DbSet<Test> Tests { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Answer> Answers { get; set; }
+        public DbSet<UserLesson> UserLessons { get; set; }
+        public DbSet<UserTestResult> UserTestResults { get; set; }
+        public DbSet<Certificate> Certificates { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<FinGramUser>().HasData(
-                new FinGramUser
-                {
-                    Id = 1,
-                    FirstName = "Arina",
-                    LastName = "Trifonova",
-                    BirthDate = DateTime.SpecifyKind(new DateTime(2000, 1, 1), DateTimeKind.Utc),
-                    Country = "Russia",
-                    Login = "arina",
-                    UserPasswordHash = "hashedpassword"           
-                },
-                new FinGramUser
-                {
-                    Id = 2,
-                    FirstName = "Camilla",
-                    LastName = "Trifonova",
-                    BirthDate = DateTime.SpecifyKind(new DateTime(2000, 1, 1), DateTimeKind.Utc),
-                    Country = "Russia",
-                    Login = "larrx",
-                    UserPasswordHash = "hashedpassword"
-                }
-            );
-        }
+            base.OnModelCreating(modelBuilder);
 
-        public bool TestConnection()
-        {
-            try
-            {
-                return Database.CanConnect();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Ошибка подключения: {ex.Message}");
-                return false;
-            }
+            // Composite key for UserLesson
+            modelBuilder.Entity<UserLesson>()
+                .HasKey(ul => new { ul.UserLessonsId, ul.UserId, ul.LessonId });
+
+            // Lesson -> Course (one-to-many)
+            modelBuilder.Entity<Lesson>()
+                .HasOne(l => l.Course)
+                .WithMany(c => c.Lessons)
+                .HasForeignKey(l => l.CourseId);
+
+            // Test -> Course (one-to-many, optional)
+            modelBuilder.Entity<Test>()
+                .HasOne(t => t.Course)
+                .WithMany(c => c.Tests)
+                .HasForeignKey(t => t.CourseId)
+                .IsRequired(false);
+
+            // Test -> Lesson (one-to-many, optional)
+            modelBuilder.Entity<Test>()
+                .HasOne(t => t.Lesson)
+                .WithMany(l => l.Tests)
+                .HasForeignKey(t => t.LessonId)
+                .IsRequired(false);
+
+            // Test CHECK constraint
+            modelBuilder.Entity<Test>()
+                .HasCheckConstraint("check_lesson_or_course",
+                    "((lesson_id IS NOT NULL AND course_id IS NULL) OR (lesson_id IS NULL AND course_id IS NOT NULL))");
+
+            // Question -> Test (one-to-many)
+            modelBuilder.Entity<Question>()
+                .HasOne(q => q.Test)
+                .WithMany(t => t.Questions)
+                .HasForeignKey(q => q.TestId);
+
+            // Answer -> Question (one-to-many)
+            modelBuilder.Entity<Answer>()
+                .HasOne(a => a.Question)
+                .WithMany(q => q.Answers)
+                .HasForeignKey(a => a.QuestionId);
+
+            // UserLesson -> User (many-to-one)
+            modelBuilder.Entity<UserLesson>()
+                .HasOne(ul => ul.User)
+                .WithMany(u => u.UserLessons)
+                .HasForeignKey(ul => ul.UserId);
+
+            // UserLesson -> Lesson (many-to-one)
+            modelBuilder.Entity<UserLesson>()
+                .HasOne(ul => ul.Lesson)
+                .WithMany(l => l.UserLessons)
+                .HasForeignKey(ul => ul.LessonId);
+
+            // UserTestResult -> Test (many-to-one)
+            modelBuilder.Entity<UserTestResult>()
+                .HasOne(utr => utr.Test)
+                .WithMany(t => t.UserTestResults)
+                .HasForeignKey(utr => utr.TestId);
+
+            // UserTestResult -> User (many-to-one)
+            modelBuilder.Entity<UserTestResult>()
+                .HasOne(utr => utr.User)
+                .WithMany(u => u.UserTestResults)
+                .HasForeignKey(utr => utr.UserId);
+
+            // Certificate -> User (one-to-many)
+            modelBuilder.Entity<Certificate>()
+                .HasOne(c => c.User)
+                .WithMany(u => u.Certificates)
+                .HasForeignKey(c => c.UserId);
         }
     }
 }

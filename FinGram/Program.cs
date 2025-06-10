@@ -1,26 +1,22 @@
 using FinGram.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql("Host=localhost;Database=FinGram;Username=your_username;Password=your_password"));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddDefaultTokenProviders();
+
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
-using (var scope = app.Services.CreateScope())
-{
-    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    if (dbContext.TestConnection())
-    {
-        Console.WriteLine("Подключение к базе данных успешно установлено.");
-    }
-    else
-    {
-        Console.WriteLine("Не удалось подключиться к базе данных.");
-    }
-}
 
 app.UseStaticFiles();
 app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapRazorPages();
 app.Run();
