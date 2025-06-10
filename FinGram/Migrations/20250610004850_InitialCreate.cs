@@ -244,7 +244,7 @@ namespace FinGram.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tests", x => x.Id);
-                    table.CheckConstraint("check_lesson_or_course", "((lesson_id IS NOT NULL AND course_id IS NULL) OR (lesson_id IS NULL AND course_id IS NOT NULL))");
+                    table.CheckConstraint("check_lesson_or_course", "\"LessonId\" IS NOT NULL AND \"CourseId\" IS NULL OR \"LessonId\" IS NULL AND \"CourseId\" IS NOT NULL");
                     table.ForeignKey(
                         name: "FK_Tests_Courses_CourseId",
                         column: x => x.CourseId,

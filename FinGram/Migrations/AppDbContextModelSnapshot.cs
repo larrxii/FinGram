@@ -171,7 +171,7 @@ namespace FinGram.Migrations
 
                     b.ToTable("Tests", t =>
                         {
-                            t.HasCheckConstraint("check_lesson_or_course", "((lesson_id IS NOT NULL AND course_id IS NULL) OR (lesson_id IS NULL AND course_id IS NOT NULL))");
+                            t.HasCheckConstraint("check_lesson_or_course", "\"LessonId\" IS NOT NULL AND \"CourseId\" IS NULL OR \"LessonId\" IS NULL AND \"CourseId\" IS NOT NULL");
                         });
                 });
 

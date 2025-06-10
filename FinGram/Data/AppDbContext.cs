@@ -52,7 +52,7 @@ namespace FinGram.Data
             // Test CHECK constraint
             modelBuilder.Entity<Test>()
                 .HasCheckConstraint("check_lesson_or_course",
-                    "((lesson_id IS NOT NULL AND course_id IS NULL) OR (lesson_id IS NULL AND course_id IS NOT NULL))");
+                    "\"LessonId\" IS NOT NULL AND \"CourseId\" IS NULL OR \"LessonId\" IS NULL AND \"CourseId\" IS NOT NULL");
 
             // Question -> Test (one-to-many)
             modelBuilder.Entity<Question>()
