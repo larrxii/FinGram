@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql("Host=localhost;Database=FinGram;Username=your_username;Password=your_password"));
+    options.UseNpgsql("Host=localhost;Database=FinGram;Username=postgres;Password=PassWord11"));
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
