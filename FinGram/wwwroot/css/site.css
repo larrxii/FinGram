@@ -509,6 +509,12 @@ span {
         cursor: pointer;
     }
 
+    .btn-continue:hover {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+        transition: box-shadow 0.3s ease;
+    }
+
 .statistics-card.right {
     width: 500px;
     height: 200px;
@@ -573,6 +579,7 @@ span {
             width: 40px; 
             height: 40px;
         }
+
 .motivation-text {
     width: 1120px;
     height: 70px;
@@ -642,6 +649,12 @@ span {
         transition: background-color 0.3s ease;
     }
 
+        .btn-edit:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+        }
+
     .btn-logout {
         font-family: "Raleway", sans-serif;
         font-weight: 200;
@@ -654,6 +667,12 @@ span {
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
+
+        .btn-logout:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+        }
 
 .personal-account.second {
     display: flex;
@@ -725,6 +744,12 @@ span {
             transition: background-color 0.3s ease;
         }
 
+            .btn-connectnotice:hover {
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+                cursor: pointer;
+                transition: box-shadow 0.3s ease;
+            }
+
 
     .container-btn-feedback {
         display: flex;
@@ -744,27 +769,139 @@ span {
             transition: background-color 0.3s ease;
         }
 
+            .btn-feedback:hover {
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+                cursor: pointer;
+                transition: box-shadow 0.3s ease;
+            }
+
 /* CourseProgram */
 .course-program-page {
     display: flex;
-    min-height: 100vh; 
+    align-items: stretch;
+    min-height: 10vh;
+    margin-top:-20px;
 }
 
-.sidebar h2 {
-    width: 45%;
-    padding: 30px;
-    background-color: #F0F0F0;
+.sidebar {
+    width: 30%;
+    padding: 10px;
+    background-color: #F5F5F5;
+    box-sizing: border-box;
+}
+
+    .sidebar h2 {
+        width: 90%;
+        padding: 20px;
+        margin: 0;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 21px;
+    }
+
+    .sidebar p {
+        padding: 5px 0;
+        margin: 2px 0 -10px 20px;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+        background-color: transparent; 
+    }
+/**/
+    .sidebar a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        padding: 5px 0;
+        transition: color 0.3s ease, text-decoration 0.3s ease;
+    }
+
+    .sidebar p:hover {
+        text-decoration: underline;
+        text-decoration-color: black;
+        cursor: pointer;
+    }
+
+
+.main-content {
+    width: 60%;
+    padding: 0px;
+    background-color: #ffffff;
     font-family: "Space Grotesk", sans-serif;
-    font-weight: 400;
-    font-size: 20px;
+    box-sizing: border-box;
+    margin-top: -10px;
 }
 
 .main-content h2 {
-    width: 55%;
-    padding: 30px;
+    width: 60%;
+    margin-left: 50px;
     background-color: #ffffff;
     font-family: "Space Grotesk", sans-serif;
 }
+/**/
+.course-program {
+    border: 2px solid #3E82F7;
+    border-radius: 35px;
+    padding: 0.4px;
+    width: 715px;
+    margin: 0 auto;
+    font-family: sans-serif;
+    margin-left: 50px;
+}
+
+.course-topic {
+    border: 2px solid #3E82F7;
+    border-radius: 35px;
+    width: 672px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    margin-left: -0.2px;
+}
+
+.topic-title-first {
+    font-weight: bold;
+    font-size: 18px;
+    padding-top: 0px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-family: "Space Grotesk", sans-serif;
+}
+
+.topic-title-second {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0 0 10px 0;
+    font-family: "Space Grotesk", sans-serif;
+}
+
+.subtopics {
+    list-style: none;
+    padding-left: 20px;
+    margin: 0;
+    padding: 20px;
+    padding-top: -0px;
+}
+
+    .subtopics li {
+        margin-bottom: 14px;
+        font-size: 19px;
+        font-family: "Raleway", sans-serif;
+    }
+
+    .subtopics li:hover {
+        text-decoration: underline;
+        text-decoration-color: black; 
+        cursor: pointer; 
+    }  
+    
+    .subtopics a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        padding: 5px 0;
+        transition: color 0.3s ease, text-decoration 0.3s ease;
+    }
+
 
 /* Àuthorization */
 .login-container {
