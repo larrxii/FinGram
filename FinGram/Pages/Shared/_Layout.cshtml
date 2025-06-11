@@ -33,6 +33,11 @@
                                 <li class="btn"><a asp-page="/Login">вход</a></li>
                             }
                     </ul>
+                    <div id="authPopup" class="auth-popup hidden">
+                        <a href="/Аuthorization">вход</a>
+                        <a>  /  </a>
+                        <a href="/Register">регистрация</a>
+                    </div>
                 </nav>  
         </header>
 
@@ -152,6 +157,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/auth-modal.js" asp-append-version="true"></script>
+    <script src="~/js/auth-registr-window.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

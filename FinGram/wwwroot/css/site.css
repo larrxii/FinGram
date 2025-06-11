@@ -92,7 +92,7 @@ header nav{
             header nav ul li a {
                 font-size: 21px;
                 color: black;
-                text-decoration: none;
+                text-decoration:     none;
             }
 
             header nav ul li.active::after {
@@ -121,6 +121,39 @@ header .logo {
     color: black;
     text-decoration: none;
 }
+
+.auth-popup {
+    width: 200px;
+    height: 33px;
+    background-color: #7D9EE4;
+    position: absolute;
+    top: 80px;
+    left: 95%;
+    transform: translateX(-100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+} 
+    .auth-popup.show {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .auth-popup a {
+        font-family: "Raleway", sans-serif;
+        font-size: 20px;
+        font-weight: 400;
+        color: black;
+        text-decoration: none;
+    }
+
+    .auth-popup a:hover {
+        text-decoration: underline;
+        text-decoration-color: black; 
+    }
 
 .header-button .btn {
     background: #4A877D;
@@ -624,14 +657,14 @@ span {
 
 .personal-account.second {
     display: flex;
-    gap: 8px; 
+    gap: 60px; 
     align-items: flex-start;
     width: 100%;
     margin-top: 40px;
 }
 
     .personal-account.statistic {
-        width: 600px;
+        width: 520px;
         height: 200px;
         background-color: #F1F2F6;
         border-radius: 35px;
@@ -655,7 +688,7 @@ span {
         }
 
     .personal-account.notice {
-        width: 600px;
+        width: 520px;
         height: 200px;
         background-color: #4A6FFE;
         border-radius: 35px;
@@ -710,3 +743,140 @@ span {
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
+
+/* CourseProgram */
+.course-program-page {
+    display: flex;
+    min-height: 100vh; 
+}
+
+.sidebar h2 {
+    width: 45%;
+    padding: 30px;
+    background-color: #F0F0F0;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.main-content h2 {
+    width: 55%;
+    padding: 30px;
+    background-color: #ffffff;
+    font-family: "Space Grotesk", sans-serif;
+}
+
+/* Àuthorization */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    min-height: 50vh; 
+    text-align: center;
+}
+    .login-container h2 {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 35px;
+    }
+
+    .login,
+    .password{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 600px;
+        height: 48px;
+        border-radius: 35px;
+        gap: 20px;
+        margin-bottom: 20px;
+
+        font-family: "Raleway", sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .submit-login {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 115px;
+        height: 50px;
+        border-radius: 35px;
+        margin: 0 auto;
+        font-family: "Raleway", sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        background-color: #4A6FFE;
+        color: white;
+        border: none;
+        justify-content: center;
+    }
+
+    .submit-login:hover {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); 
+        cursor: pointer; 
+        transition: box-shadow 0.3s ease; 
+    }
+
+/* Register */
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    text-align: center;
+}
+
+    .register-container h2 {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 35px;
+    }
+
+    .name,
+    .surename,
+    .login,
+    .password {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 600px;
+        height: 48px;
+        border-radius: 35px;
+        gap: 20px;
+        margin-bottom: 20px;
+        font-family: "Raleway", sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .submit-reg {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 245px;
+        height: 50px;
+        border-radius: 35px;
+        margin: 0 auto;
+        font-family: "Raleway", sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        background-color: #4A6FFE;
+        color: white;
+        border: none;
+        justify-content: center;
+    }
+
+    .submit-reg:hover {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+        transition: box-shadow 0.3s ease;
+    }

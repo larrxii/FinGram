@@ -1,0 +1,14 @@
+﻿@page
+@model FinGram.Pages.АuthorizationModel
+@{
+	ViewData["Title"] = "Авторизация";
+}
+
+<div class="login-container">
+	<h2>Авторизация</h2>
+	<form method="post" action="/Account/Login">
+		<input type="text" class="login" name="login" placeholder="Логин" required />
+		<input type="password" class="password" name="password" placeholder="Пароль" required />
+		<button type="submit-login" class="submit-login">Войти</button>
+	</form>
+</div>

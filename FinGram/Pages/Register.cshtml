@@ -1,0 +1,16 @@
+﻿@page
+@model FinGram.Pages.RegisterModel
+@{
+	ViewData["Title"] = "Регистрация";
+}
+
+<div class="register-container">
+	<h2>Регистрация</h2>
+	<form method="post" action="/Account/Login">
+		<input type="text" class="name" name="name" placeholder="Имя" required />
+		<input type="password" class="surename" name="surename" placeholder="Фамилия" required />
+		<input type="text" class="login" name="login" placeholder="Логин" required />
+		<input type="password" class="password" name="password" placeholder="Пароль" required />
+		<button type="submit-reg" class="submit-reg">Зарегистрироваться</button>
+	</form>
+</div>
