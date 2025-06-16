@@ -1078,6 +1078,15 @@ span {
         transition: box-shadow 0.3s ease;
     }
 
+.password-hint {
+    margin-top: 4px;
+    margin-bottom: 0;
+    font-size: 0.9em;
+    color: #6c757d;
+    
+    font-style: italic;
+}
+
 /* Lesson */
 .program-container {
     display: flex;
@@ -1086,12 +1095,12 @@ span {
 }
 
     .navigation {
-        flex: 0 0 230px;
+        flex: 0 0 240px;
         list-style: none;
         padding: 0;
         margin: 0;
         border-right: 4px solid #5C9CE5;
-         padding-top: 20px;
+        padding-top: 20px;
     }
 
         .navigation a.active-link1 {
@@ -1163,6 +1172,94 @@ span {
 
 /* Lesson 2_4 */
 .navigation a.active-link7 {
+    background-color: #C8E0F9;
+    font-weight: bold;
+}
+
+
+/* Test 1 */
+.test-container {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+}
+
+.test-text {
+    text-align: center; 
+    margin: 0 auto; 
+    width: 100%; 
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.navigation a.active-link-test1 {
+    background-color: #C8E0F9;
+    font-weight: bold;
+}
+
+.answers {
+    text-decoration: none;
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.question-block p {
+    padding-top: 15px;
+}
+
+    .question-block p {
+        margin-bottom: -3px;
+    }
+
+.answers {
+    margin-top: 3px; 
+    padding-left: 0; 
+}
+
+.text-answer {
+    background-color: white;
+    border: none;
+    border: 2px solid #5C9CE5;
+    border-radius: 2px;
+    padding: 10px;
+    font-weight: 500;
+    width: 35%;
+    height: 40px;
+}
+
+.submit-button {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width:230px;
+    height: 40px;
+    border-radius: 35px;
+    margin: 0 auto;
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    background-color: #4A6FFE;
+    color: white;
+    border: none;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.submit-button:hover {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+        transition: box-shadow 0.3s ease;
+}
+
+/* Test 2 */
+.navigation a.active-link-test2 {
+    background-color: #C8E0F9;
+    font-weight: bold;
+}
+
+/* Test Final */
+.navigation a.active-link-testfinal {
     background-color: #C8E0F9;
     font-weight: bold;
 }

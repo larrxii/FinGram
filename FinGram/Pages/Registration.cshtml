@@ -27,6 +27,7 @@
             <label asp-for="Input.Password"></label>
             <input asp-for="Input.Password" type="password" class="form-control" />
             <span asp-validation-for="Input.Password" class="text-danger"></span>
+            <p class="password-hint">Пароль должен содержать не менее 6 символов и включать в себя цифры</p>
         </div>
         <div class="form-group-confirmpass">
             <label asp-for="Input.ConfirmPassword"></label>
