@@ -1,0 +1,42 @@
+﻿@page
+@model FinGram.Pages.Lesson1_1Model
+@{
+	ViewData["Title"] = "Урок";
+	var paragraphs = Model.Content?.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries) ?? Array.Empty<string>();
+}
+
+<div class="program-container">
+	<div class="navigation">
+		<li><a href="/Lesson1_1" class="active-link1">1.1 Что такое бюджет и зачем он нужен</a></li>
+		<li><a href="/Lesson1_2">1.2 Учёт доходов, расходов и правило 50/30/20</a></li>
+		<li><a href="/Lesson1_3">1.3 Формирование подушки безопасности и непредвиденные расходы</a></li>
+		<li><a href="/Lesson2_1">2.1 Банковские продукты: вклады, кредиты и комиссии</a></li>
+		<li><a href="/Lesson2_2">2.2 Карты: дебетовые vs кредитные</a></li>
+		<li><a href="/Lesson2_3">2.3 Налоги и обязательные платежи: базовые виды и сроки уплаты</a></li>
+		<li><a href="/Lesson2_4">2.4 Как не стать жертвой финансового мошенничества</a></li>
+	</div>
+
+	<div class="program">
+		<h2>Содержание</h2>
+
+		@foreach (var paragraph in paragraphs)
+		{
+			if (paragraph.Contains("Что такое бюджет"))
+			{
+				<p class="important">@paragraph</p>
+			}
+			else if (paragraph.Contains("Зачем нужен личный бюджет"))
+			{
+				<p class="important">@paragraph</p>
+			}
+			else if (paragraph.Contains("Каким должен быть бюджет"))
+			{
+				<p class="important">@paragraph</p>
+			}
+			else
+			{
+				<p>@paragraph</p>
+			}
+		}
+	</div>
+</div>
