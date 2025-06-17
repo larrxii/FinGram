@@ -11,7 +11,7 @@ namespace FinGram.Models
         public string Token { get; set; }
 
         [Required]
-        public string UserId { get; set; }
+        public int UserId { get; set; }
 
         [ForeignKey("UserId")]
         public User User { get; set; }

@@ -44,7 +44,7 @@ namespace FinGram.Pages.API
 
             return new JsonResult(new TelegramAuthResponse
             {
-                UserId = link.UserId,
+                UserId = link.UserId.ToString(),
                 UserName = link.User.UserName,
                 Email = link.User.Email
             });

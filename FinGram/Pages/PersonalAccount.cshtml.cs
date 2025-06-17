@@ -29,8 +29,12 @@ namespace FinGram.Pages
 
         public async Task<IActionResult> OnGetAsync()
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var user = await _userManager.FindByIdAsync(userId);
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!int.TryParse(userIdStr, out var userId))
+            {
+                return BadRequest("Invalid user ID");
+            }
+            var user = await _userManager.FindByIdAsync(userIdStr);
             if (user == null)
             {
                 return NotFound();
