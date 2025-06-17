@@ -22,22 +22,32 @@
                             {
                                 <li class="btn"><a asp-page="/PersonalAccount">личный кабинет</a></li>
                                 <li>
+                                    <!--
                                     <form method="post" asp-page-handler="Logout" asp-page="/Login">
                                         <button type="submit" class="btn btn-link nav-link">выйти</button>
                                     </form>
+                                    -->
                                 </li>
                             }
                             else
                             {
-                                <li class="btn"><a asp-page="/Registration">регистрация</a></li>
-                                <li class="btn"><a asp-page="/Login">вход</a></li>
+                                <li class="btn" id="openAuthForm" style="position: relative;">
+                                    <a href="javascript:void(0);">личный кабинет</a>
+                                    <div id="authPopup" class="auth-popup hidden">
+                                        <a href="/Login">вход</a>
+                                        <a>/</a>
+                                        <a href="/Registration">регистрация</a>
+                                    </div>
+                                </li>
                             }
                     </ul>
-                    <div id="authPopup" class="auth-popup hidden">
+                    <!--
+                        <div id="authPopup" class="auth-popup hidden">
                         <a href="/Аuthorization">вход</a>
                         <a>  /  </a>
                         <a href="/Register">регистрация</a>
                     </div>
+                    -->
                 </nav>  
         </header>
 

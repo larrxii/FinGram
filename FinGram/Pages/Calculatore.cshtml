@@ -1,0 +1,63 @@
+﻿@page
+@model FinGram.Pages.CalculatoreModel
+@{
+	ViewData["Title"] = "Калькулятор бюджета";
+}
+
+<div class="calculatore-container">
+	<h1>Калькулятор бюджета</h1>
+	<p>
+		В день зарплаты кажется, что можно позволить себе всё: траты не ограничены, настроение на высоте. 
+		Но уже через пару недель деньги почти на исходе — и приходится считать каждый рубль.
+		Наш калькулятор поможет вам грамотно распланировать бюджет, чтобы не пришлось ни у кого занимать и даже удалось бы откладывать.
+		Просто введите сумму дохода и регулярные расходы — и узнайте, сколько можно тратить в день, не выходя за рамки.
+	</p>
+	<div id="income-section">
+		<h2>Ваш доход</h2>
+		<p>Укажите все источники дохода, которые у вас есть в течение месяца</p>
+
+		<div class="income-input">
+			<input type="number" class="form-control income-field" placeholder="Доход в рублях" />
+		</div>
+		<div class="income-input">
+			<input type="number" class="form-control income-field" placeholder="Дополнительный доход в рублях" />
+		</div>
+		<button type="button" class="btn-success" onclick="addIncomeField()">+</button>
+	</div>
+	
+
+	<div id="expenses-section">
+		<h2>Регулярные расходы</h2>
+		<p>Укажите траты, которые вычитаются из вашего бюджета ежемесячно</p>
+
+		<div class="expense-input">
+			<input type="number" class="form-control expense-field" placeholder="Расходы в рублях" />
+		</div>
+		<div class="expense-input">
+			<input type="number" class="form-control expense-field" placeholder="Расходы в рублях" />
+		</div>
+		<button type="button" class="btn-success" onclick="addExpenseField()">+</button>
+	</div>
+
+	<div id="saving-section">
+		<h2>Сбережения</h2>
+		<p>Укажите, сколько вы хотите откладывать</p>
+		<input type="number" id="savings-input" class="form-control" placeholder="Сбережения в месяц" />
+	</div>
+
+	<button type="button" class="btn-primary" onclick="calculateBudget()">Рассчитать</button>
+
+	<p id="warning-message" class="text-danger mt-3" style="display: none;"></p>
+
+	<div id="result-section" class="mt-4" style="display: none;">
+		<h2>Результаты:</h2>
+		<p>Ваш бюджет на день:<br> <span id="daily-budget"></span> 
+			₽</p>
+		<p>Лимит трат на месяц: <span id="monthly-limit"></span> ₽</p>
+		<p>Накопите за месяц: <span id="monthly-savings"></span> ₽</p>
+		<p>Накопите за год: <span id="yearly-savings"></span> ₽</p>
+	</div>
+	
+</div>
+
+<script src="~/js/calculatore.js" asp-append-version="true"></script>

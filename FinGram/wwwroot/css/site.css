@@ -92,7 +92,7 @@ header nav{
             header nav ul li a {
                 font-size: 21px;
                 color: black;
-                text-decoration:     none;
+                text-decoration:  none;
             }
 
             header nav ul li.active::after {
@@ -109,6 +109,13 @@ header nav{
                 transition: all 200ms ease;
             }
 
+            header nav ul li.btn:hover {
+                border-bottom: 3px solid #000000;
+                border-radius: 0; 
+                transition: all 200ms ease;
+            }
+
+
 
 header .logo {
     float: left;
@@ -123,11 +130,11 @@ header .logo {
 }
 
 .auth-popup {
-    width: 200px;
+    width: 190px;
     height: 33px;
     background-color: #7D9EE4;
     position: absolute;
-    top: 80px;
+    top: 40px;
     left: 95%;
     transform: translateX(-100%);
     display: flex;
@@ -136,6 +143,7 @@ header .logo {
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.3s ease;
+    gap: 6px;
 } 
     .auth-popup.show {
         visibility: visible;
@@ -154,6 +162,8 @@ header .logo {
         text-decoration: underline;
         text-decoration-color: black; 
     }
+
+
 
 .header-button .btn {
     background: #4A877D;
@@ -445,7 +455,7 @@ span {
 
 .statistics-card.left {
     width: 500px;
-    height: 200px;
+    height: 240px;
     background-color: #F1F2F6;
     border-radius: 35px;
     padding: 20px;
@@ -456,7 +466,7 @@ span {
     .progress-bar {
         width: 483px;
         height: 9px;
-        background-color: #FFFFFF;
+        background-color: white;
         border-radius: 30px;
         overflow: hidden;
         margin-top: 10px;
@@ -517,7 +527,7 @@ span {
 
 .statistics-card.right {
     width: 500px;
-    height: 200px;
+    height: 240px;
     background-color: #F1F2F6;
     border-radius: 35px;
     padding: 20px;
@@ -551,7 +561,7 @@ span {
         display: flex;
         justify-content: space-evenly;
         font-size: 20px;
-        margin-left: -150px;
+        margin-left: -110px;
     }
 
         .highlight-number {
@@ -575,14 +585,22 @@ span {
         align-items: center; 
         gap: 10px; 
     }
+
+        .task-reminder p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
         .task-reminder img {
             width: 40px; 
             height: 40px;
         }
 
 .motivation-text {
-    width: 1120px;
-    height: 70px;
+    width: 1110px;
+    height: 100px;
     background-color: #4A6FFE;
     border-radius: 35px;
 
@@ -614,17 +632,18 @@ span {
         object-fit: cover;
     }
 
-    .user-info h2{
+    .user-info h2 {
         font-family: "Space Grotesk", sans-serif;
-        font-size: 30px;
+        font-size: 25px;
         font-weight: 600;
         color: black;
         margin:0px;
+         white-space: nowrap;
     }
 
     .user-info p {
         font-family: "Raleway", sans-serif;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 200;
         color: black;
         margin:0px;
@@ -633,33 +652,36 @@ span {
     .button-row {
         display: flex;
         gap:10px;
-        margin-left: 438px;
+        margin-left: 365px;
     }
 
-    .btn-edit {
+    button.btn-edit.btn.btn-primary {
         font-family: "Raleway", sans-serif;
         font-weight: 200;
-        padding: 10px 16px;
-        font-size: 20px;
+        font-size: 18px;
         background-color: #4A6FFE;
         border: none;
         color: white;
         border-radius: 36px;
         cursor: pointer;
         transition: background-color 0.3s ease;
+        padding: 5px 24px;
+        white-space: nowrap; 
+        min-width: 24px;   
+        text-align: center;
     }
 
-        .btn-edit:hover {
+        button.btn-edit.btn.btn-primary:hover {
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
             cursor: pointer;
             transition: box-shadow 0.3s ease;
         }
 
-    .btn-logout {
+    button.btn-logout.btn.btn-danger {
         font-family: "Raleway", sans-serif;
         font-weight: 200;
         padding: 8px 16px;
-        font-size: 20px;
+        font-size: 18px;
         background-color: #000000;
         color: white;
         border-radius: 35px;
@@ -668,11 +690,11 @@ span {
         transition: background-color 0.3s ease;
     }
 
-        .btn-logout:hover {
+         button.btn-logout.btn.btn-danger:hover {
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
             cursor: pointer;
             transition: box-shadow 0.3s ease;
-        }
+         }
 
 .personal-account.second {
     display: flex;
@@ -684,14 +706,14 @@ span {
 
     .personal-account.statistic {
         width: 520px;
-        height: 200px;
+        height: 220px;
         background-color: #F1F2F6;
         border-radius: 35px;
         padding: 20px;
     }
         .personal-account.statistic h1 {
             font-family: "Space Grotesk", sans-serif;
-            font-size: 28px;
+            font-size: 25px;
             font-weight: 600;
             color: black;
             text-decoration: none;
@@ -700,7 +722,7 @@ span {
         .personal-account.statistic p {
             font-family: "Montserrat Alternates", sans-serif;
             font-style: normal;
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 400;
             color: black;
             text-decoration: none;
@@ -708,7 +730,7 @@ span {
 
     .personal-account.notice {
         width: 520px;
-        height: 200px;
+        height: 220px;
         background-color: #4A6FFE;
         border-radius: 35px;
         padding: 20px;
@@ -716,7 +738,7 @@ span {
 
         .personal-account.notice h1 {
             font-family: "Montserrat Alternates", sans-serif;
-            font-size: 25px;
+            font-size: 23px;
             font-weight: 600;
             color: white;
             text-decoration: none;
@@ -725,30 +747,30 @@ span {
         .personal-account.notice p {
             font-family: "Montserrat Alternates", sans-serif;
             font-style: normal;
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 200;
             color: white;
             text-decoration: none;
         }
 
-        .btn-connectnotice {
+        button.btn-connectnotice.btn.btn-secondary {
             font-family: "Raleway", sans-serif;
             font-weight: 400;
             padding: 8px 16px;
-            font-size: 20px;
-            background-color: #FFFFFF;
-            color: black;
+            font-size: 18px;
+            background-color: #FFFFFF !important;
+            color: black !important;
             border-radius: 35px;
-            border: none;
+            border: none !important;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
 
-            .btn-connectnotice:hover {
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-                cursor: pointer;
-                transition: box-shadow 0.3s ease;
-            }
+        button.btn-connectnotice.btn.btn-secondary:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+        }
 
 
     .container-btn-feedback {
@@ -756,11 +778,12 @@ span {
         justify-content: center;
         margin-top: 40px;
     }
-        .btn-feedback {
+
+        button.btn-feedback.btn.btn-info {
             font-family: "Raleway", sans-serif;
             font-weight: 400;
             padding: 8px 16px;
-            font-size: 20px;
+            font-size: 18px;
             background-color: #4A6FFE;
             color: white;
             border-radius: 35px;
@@ -769,11 +792,11 @@ span {
             transition: background-color 0.3s ease;
         }
 
-            .btn-feedback:hover {
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-                cursor: pointer;
-                transition: box-shadow 0.3s ease;
-            }
+        button.btn-feedback.btn.btn-info:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+        }
 
 /* CourseProgram */
 .course-program-page {
@@ -785,9 +808,11 @@ span {
 
 .sidebar {
     width: 30%;
-    padding: 10px;
-    background-color: #F5F5F5;
-    box-sizing: border-box;
+    background-color: #F7F7F7;
+    border: 2px solid #4A6FFE;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
     .sidebar h2 {
@@ -807,7 +832,7 @@ span {
         font-size: 18px;
         background-color: transparent; 
     }
-/**/
+
     .sidebar a {
         text-decoration: none;
         color: inherit;
@@ -824,26 +849,26 @@ span {
 
 
 .main-content {
-    width: 60%;
-    padding: 0px;
+    width: 50%;
+    padding: 20px;
     background-color: #ffffff;
     font-family: "Space Grotesk", sans-serif;
     box-sizing: border-box;
-    margin-top: -10px;
+    margin-top: 0px;
 }
+    .main-content h2 {
+        width: 60%;
+        margin-left: 50px;
+        font-weight: 600;
+        font-size: 28px;
+        font-family: "Space Grotesk", sans-serif;
+    }
 
-.main-content h2 {
-    width: 60%;
-    margin-left: 50px;
-    background-color: #ffffff;
-    font-family: "Space Grotesk", sans-serif;
-}
-/**/
 .course-program {
     border: 2px solid #3E82F7;
     border-radius: 35px;
-    padding: 0.4px;
-    width: 715px;
+    padding: 0px;
+    width: 676px;
     margin: 0 auto;
     font-family: sans-serif;
     margin-left: 50px;
@@ -903,7 +928,7 @@ span {
     }
 
 
-/* Àuthorization */
+/* Login */
 .login-container {
     display: flex;
     flex-direction: column;
@@ -918,21 +943,30 @@ span {
         font-size: 35px;
     }
 
-    .login,
-    .password{
+    .login-container label {
+        font-family: "Raleway", sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        color: black;
+        margin-bottom: 5px;
+        text-align: left; 
+        display: block; 
+        width: 100%;
+    }
+
+    .login-container .form-group-login input,
+    .login-container .form-group-password input {
         display: flex;
-        flex-direction: column;
+        flex-direction: column !important;
         gap: 15px;
-        width: 600px;
+        width: 600px !important;
         height: 48px;
         border-radius: 35px;
-        gap: 20px;
+        gap: 2px;
         margin-bottom: 20px;
-
         font-family: "Raleway", sans-serif;
         font-weight: 400;
         font-size: 20px;
-
         padding: 10px;
         font-size: 16px;
     }
@@ -960,13 +994,29 @@ span {
         transition: box-shadow 0.3s ease; 
     }
 
-/* Register */
+.text-danger:empty {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    height: 0;
+}
+
+.text-danger:not(:empty) {
+    background-color: transparent;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    display: inline-block;
+}
+
+/* Registration */
 .register-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 50vh;
+    min-height: 0vh;
     text-align: center;
 }
 
@@ -976,10 +1026,22 @@ span {
         font-size: 35px;
     }
 
-    .name,
-    .surename,
-    .login,
-    .password {
+    .register-container label {
+        font-family: "Raleway", sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        color: black;
+        margin-bottom: 5px;
+        text-align: left;
+        display: block;
+        width: 100%;
+    }
+
+    .register-container .form-group-email input,
+    .register-container .form-group-name input,
+    .register-container .form-group-surename input,
+    .register-container .form-group-password input,
+    .register-container .form-group-confirmpass input{
         display: flex;
         flex-direction: column;
         gap: 15px;
@@ -1017,3 +1079,367 @@ span {
         cursor: pointer;
         transition: box-shadow 0.3s ease;
     }
+
+.password-hint {
+    margin-top: -20px;
+    margin-left:90px;
+    margin-bottom: 0;
+    font-size: 14px;
+    color: #6c757d;
+    
+    font-style: italic;
+}
+
+/* Lesson */
+.program-container {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+}
+
+    .navigation {
+        flex: 0 0 280px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        padding-top: 20px;
+        background-color: #F7F7F7;
+        border: 2px solid #4A6FFE;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    }
+
+        .navigation a.active-link1 {
+            background-color: #D0D9FF;
+            font-weight: bold;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            color: black;
+            color: black;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 230px;
+            margin-bottom: 15px;
+        }
+            .navigation a:hover {
+                text-decoration: underline;
+                text-decoration-color: black;
+                cursor: pointer;
+            }
+
+    .program {
+        padding: 20px;
+    }
+
+    .program h2 {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 30px;
+        text-align: center;
+    }
+
+        .important {
+            background-color: #D0D9FF;
+            border-left: 4px solid #4A6FFE;
+            padding: 10px;
+            font-weight: 500;
+        }
+
+
+/* Lesson 1_2 */
+.navigation a.active-link2 {
+    background-color: #D0D9FF;
+    font-weight: bold;
+}
+
+/* Lesson 1_3 */
+.navigation a.active-link3 {
+    background-color: #D0D9FF;
+    font-weight: bold;
+}
+
+/* Lesson 2_1 */
+.navigation a.active-link4 {
+    background-color: #D0D9FF;
+    font-weight: bold;
+}
+
+/* Lesson 2_2 */
+.navigation a.active-link5 {
+    background-color: #D0D9FF;
+    font-weight: bold;
+}
+
+/* Lesson 2_3 */
+.navigation a.active-link6 {
+    background-color: #D0D9FF;
+    font-weight: bold;
+}
+
+/* Lesson 2_4 */
+.navigation a.active-link7 {
+    background-color: #D0D9FF;
+    font-weight: bold;
+}
+
+
+/* Test 1 */
+.test-container {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+}
+
+.test {
+    padding: 20px;
+}
+
+    .test h2 {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 25px;
+    }
+
+    .test p {
+        font-family: "Raleway", sans-serif;
+        font-weight: 400;
+        font-size: 15px;
+    }
+
+.test-text {
+    text-align: center; 
+    margin: 0 auto; 
+    width: 100%; 
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.navigation a.active-link-test1 {
+    background-color: #D0D9FF;
+    font-weight: bold;
+}
+
+.answers {
+    text-decoration: none;
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.question-block p {
+    padding-top: 15px;
+}
+
+    .question-block p {
+        margin-bottom: -3px;
+    }
+
+.answers {
+    margin-top: 3px; 
+    padding-left: 0; 
+}
+
+.text-answer {
+    background-color: white;
+    border: none;
+    border: 2px solid  #4A6FFE;
+    border-radius: 2px;
+    padding: 10px;
+    font-weight: 500;
+    width: 35%;
+    height: 40px;
+}
+
+.submit-button {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width:230px;
+    height: 40px;
+    border-radius: 35px;
+    margin: 0 auto;
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    background-color: #4A6FFE;
+    color: white;
+    border: none;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.submit-button:hover {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+        transition: box-shadow 0.3s ease;
+}
+
+/* Test 2 */
+.navigation a.active-link-test2 {
+    background-color: #D0D9FF;
+    font-weight: bold;
+}
+
+/* Test Final */
+.navigation a.active-link-testfinal {
+    background-color: #D0D9FF;
+    font-weight: bold;
+}
+
+/* Calculatore */
+.calculatore-container h1 {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 600;
+    font-size: 33px;
+}
+#income-section {
+    background-color: #F7F7F7;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+    #income-section h2 {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 28px;
+    }
+
+#expenses-section {
+    background-color: #F7F7F7;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+    #expenses-section h2 {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 28px;
+    }
+
+#saving-section {
+    background-color: #F7F7F7;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+    #saving-section h2 {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 28px;
+    }
+
+#result-section {
+    background-color: #F7F7F7;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+    #result-section h2 {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 28px;
+    }
+
+    #result-section p {
+        font-family: "Raleway", sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+    }
+
+.btn-success {
+    display: flex;
+    flex-direction: column;
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    margin: 0 auto;
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    background-color: #4A6FFE;
+    color: white;
+    border: none;
+    justify-content: center;
+    margin-top: 10px;
+    margin-left:0px;
+}
+
+    .btn-success:hover {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+        transition: box-shadow 0.3s ease;
+    }
+
+.btn-primary {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 40px;
+    border-radius: 14px;
+    margin: 0 auto;
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    background-color: #4A6FFE;
+    color: white;
+    border: none;
+    justify-content: center;
+    margin-top: 10px;
+    margin-left: 350px;
+}
+
+    .btn-primary:hover {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+        transition: box-shadow 0.3s ease;
+    }
+
+#daily-budget {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 600;
+    font-size: 50px;
+}
+
+/* Summary */
+.download-section p{
+    margin-left: 320px;
+}
+
+    #download-button {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        height: 40px;
+        border-radius: 14px;
+        margin: 0 auto;
+        font-family: "Raleway", sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        background-color: #4A6FFE;
+        color: white;
+        border: none;
+        justify-content: center;
+        margin-top: 10px;
+        margin-left: 350px;
+    }
+
+        #download-button:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+        }
