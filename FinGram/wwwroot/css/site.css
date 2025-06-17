@@ -808,9 +808,11 @@ span {
 
 .sidebar {
     width: 30%;
-    padding: 10px;
-    background-color: #F5F5F5;
-    box-sizing: border-box;
+    background-color: #F7F7F7;
+    border: 3px solid #4A6FFE;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
     .sidebar h2 {
@@ -848,7 +850,7 @@ span {
 
 .main-content {
     width: 50%;
-    padding: 0px;
+    padding: 20px;
     background-color: #ffffff;
     font-family: "Space Grotesk", sans-serif;
     box-sizing: border-box;
@@ -1079,9 +1081,10 @@ span {
     }
 
 .password-hint {
-    margin-top: 4px;
+    margin-top: -20px;
+    margin-left:90px;
     margin-bottom: 0;
-    font-size: 0.9em;
+    font-size: 14px;
     color: #6c757d;
     
     font-style: italic;
@@ -1095,16 +1098,21 @@ span {
 }
 
     .navigation {
-        flex: 0 0 240px;
+        flex: 0 0 280px;
         list-style: none;
         padding: 0;
         margin: 0;
-        border-right: 4px solid #5C9CE5;
         padding-top: 20px;
+        background-color: #F7F7F7;
+        border: 2px solid #4A6FFE;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
     }
 
         .navigation a.active-link1 {
-            background-color: #C8E0F9;
+            background-color: #D0D9FF;
             font-weight: bold;
         }
 
@@ -1125,6 +1133,10 @@ span {
                 cursor: pointer;
             }
 
+    .program {
+        padding: 20px;
+    }
+
     .program h2 {
         font-family: "Space Grotesk", sans-serif;
         font-weight: 600;
@@ -1133,8 +1145,8 @@ span {
     }
 
         .important {
-            background-color: #C8E0F9;
-            border-left: 4px solid #5C9CE5;
+            background-color: #D0D9FF;
+            border-left: 4px solid #4A6FFE;
             padding: 10px;
             font-weight: 500;
         }
@@ -1142,37 +1154,37 @@ span {
 
 /* Lesson 1_2 */
 .navigation a.active-link2 {
-    background-color: #C8E0F9;
+    background-color: #D0D9FF;
     font-weight: bold;
 }
 
 /* Lesson 1_3 */
 .navigation a.active-link3 {
-    background-color: #C8E0F9;
+    background-color: #D0D9FF;
     font-weight: bold;
 }
 
 /* Lesson 2_1 */
 .navigation a.active-link4 {
-    background-color: #C8E0F9;
+    background-color: #D0D9FF;
     font-weight: bold;
 }
 
 /* Lesson 2_2 */
 .navigation a.active-link5 {
-    background-color: #C8E0F9;
+    background-color: #D0D9FF;
     font-weight: bold;
 }
 
 /* Lesson 2_3 */
 .navigation a.active-link6 {
-    background-color: #C8E0F9;
+    background-color: #D0D9FF;
     font-weight: bold;
 }
 
 /* Lesson 2_4 */
 .navigation a.active-link7 {
-    background-color: #C8E0F9;
+    background-color: #D0D9FF;
     font-weight: bold;
 }
 
@@ -1184,6 +1196,22 @@ span {
     align-items: stretch;
 }
 
+.test {
+    padding: 20px;
+}
+
+    .test h2 {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 25px;
+    }
+
+    .test p {
+        font-family: "Raleway", sans-serif;
+        font-weight: 400;
+        font-size: 15px;
+    }
+
 .test-text {
     text-align: center; 
     margin: 0 auto; 
@@ -1193,7 +1221,7 @@ span {
 }
 
 .navigation a.active-link-test1 {
-    background-color: #C8E0F9;
+    background-color: #D0D9FF;
     font-weight: bold;
 }
 
@@ -1220,7 +1248,7 @@ span {
 .text-answer {
     background-color: white;
     border: none;
-    border: 2px solid #5C9CE5;
+    border: 2px solid  #4A6FFE;
     border-radius: 2px;
     padding: 10px;
     font-weight: 500;
@@ -1254,12 +1282,135 @@ span {
 
 /* Test 2 */
 .navigation a.active-link-test2 {
-    background-color: #C8E0F9;
+    background-color: #D0D9FF;
     font-weight: bold;
 }
 
 /* Test Final */
 .navigation a.active-link-testfinal {
-    background-color: #C8E0F9;
+    background-color: #D0D9FF;
     font-weight: bold;
+}
+
+/* Calculatore */
+.calculatore-container h1 {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 600;
+    font-size: 33px;
+}
+#income-section {
+    background-color: #F7F7F7;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+    #income-section h2 {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 28px;
+    }
+
+#expenses-section {
+    background-color: #F7F7F7;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+    #expenses-section h2 {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 28px;
+    }
+
+#saving-section {
+    background-color: #F7F7F7;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+    #saving-section h2 {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 28px;
+    }
+
+#result-section {
+    background-color: #F7F7F7;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+    #result-section h2 {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 28px;
+    }
+
+    #result-section p {
+        font-family: "Raleway", sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+    }
+
+.btn-success {
+    display: flex;
+    flex-direction: column;
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    margin: 0 auto;
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    background-color: #4A6FFE;
+    color: white;
+    border: none;
+    justify-content: center;
+    margin-top: 10px;
+    margin-left:0px;
+}
+
+    .btn-success:hover {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+        transition: box-shadow 0.3s ease;
+    }
+
+.btn-primary {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 40px;
+    border-radius: 14px;
+    margin: 0 auto;
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    background-color: #4A6FFE;
+    color: white;
+    border: none;
+    justify-content: center;
+    margin-top: 10px;
+    margin-left: 350px;
+}
+
+    .btn-primary:hover {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+        transition: box-shadow 0.3s ease;
+    }
+
+#daily-budget {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 600;
+    font-size: 50px;
 }
