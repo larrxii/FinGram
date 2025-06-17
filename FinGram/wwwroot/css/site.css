@@ -1280,6 +1280,21 @@ span {
         transition: box-shadow 0.3s ease;
 }
 
+.result-message {
+    background-color: #F7F7F7;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+#text-result {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 600;
+    font-size: 33px;
+}
+
 /* Test 2 */
 .navigation a.active-link-test2 {
     background-color: #D0D9FF;

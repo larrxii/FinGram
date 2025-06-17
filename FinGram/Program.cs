@@ -1,5 +1,6 @@
 using FinGram.Data;
 using FinGram.Models;
+using FinGram.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,6 +24,9 @@ builder.Services.AddIdentity<User, IdentityRole<int>>()
     .AddDefaultTokenProviders();
 
 builder.Services.AddRazorPages();
+builder.Services.AddScoped<CourseService>();
+builder.Services.AddScoped<LessonService>();
+builder.Services.AddScoped<TestService>();
 
 var app = builder.Build();
 

@@ -28,6 +28,25 @@
 			<br>Желаем удачи!
 		</p>
 
+		@if (Model.Score.HasValue)
+		{
+			<div class="result-message">
+				<p id="text-result"><strong>@Model.Score из @Model.TotalQuestions</strong></p>
+				@if (Model.Score == Model.TotalQuestions)
+				{
+					<p>Поздравляем! Вы прошли тест на 100%</p>
+				}
+				else if (Model.Score >= Model.TotalQuestions / 2)
+				{
+					<p>Хороший результат! Попробуйте пройти снова для улучшения!</p>
+				}
+				else
+				{
+					<p>Увы! Вам стоит ещё раз пройти материалы темы:(</p>
+				}
+			</div>
+		}
+
 		<form method="post">
 			@foreach (var question in Model.QuestionsWithAnswers)
 			{
@@ -36,10 +55,12 @@
 					<ul class="answers">
 						@foreach (var answer in question.Answers)
 						{
-							<li>@answer.Text</li>
+							<li>
+								<input type="radio" name="Answers[@question.Id]" value="@answer.Id" />
+								<label>@answer.Text</label>
+							</li>
 						}
 					</ul>
-					<input type="text" name="Answers[@question.Id]" placeholder="Здесь можете ввести ваш ответ" class="text-answer" />
 				</div>
 			}
 
@@ -47,3 +68,5 @@
 		</form>
 	</div>
 </div>
+
+

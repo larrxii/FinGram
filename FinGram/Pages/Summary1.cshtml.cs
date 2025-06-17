@@ -3,16 +3,17 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using FinGram.Data;
 using FinGram.Models;
 using Microsoft.EntityFrameworkCore;
+using FinGram.Services;
 
 namespace FinGram.Pages
 {
 	public class Summary1Model : PageModel
 	{
-		private readonly AppDbContext _context;
+		private readonly CourseService _courseService;
 
-		public Summary1Model(AppDbContext context)
+		public Summary1Model(CourseService courseService)
 		{
-			_context = context;
+			_courseService = courseService;
 		}
 
 		public string Content { get; set; }
@@ -20,15 +21,14 @@ namespace FinGram.Pages
 
 		public async Task OnGetAsync()
 		{
-			CoursesList = await _context.Courses.ToListAsync();
+			CoursesList = await _courseService.GetAllCoursesAsync();
 
 			foreach (var course in CoursesList)
 			{
 				Console.WriteLine($"Course: {course.Description}");
 			}
 
-			var desc = await _context.Courses.FirstOrDefaultAsync(l => l.Id == 2);
-			Content = desc?.Description ?? "Контент не найден";
+			Content = await _courseService.GetCourseDescriptionByIdAsync(2);
 		}
 	}
 }

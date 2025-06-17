@@ -1,32 +1,26 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using FinGram.Data;
 using FinGram.Models;
-using Microsoft.EntityFrameworkCore;
+using FinGram.Services;
+using System;
+using System.Threading.Tasks;
+using FinGram.Services;
 
 namespace FinGram.Pages
 {
 	public class Lesson2_1Model : PageModel
 	{
-		private readonly AppDbContext _context;
+		private readonly LessonService _lessonService;
 
-		public Lesson2_1Model(AppDbContext context)
+		public Lesson2_1Model(LessonService lessonService)
 		{
-			_context = context;
+			_lessonService = lessonService;
 		}
 
 		public string Content { get; set; }
 
 		public async Task OnGetAsync()
 		{
-			var lessons = await _context.Lessons.ToListAsync();
-
-			foreach (var lesson in lessons)
-			{
-				Console.WriteLine($"Lesson: {lesson.Id} Ч {lesson.Title} Ч {lesson.Content}");
-			}
-
-			var lesson1 = await _context.Lessons.FirstOrDefaultAsync(l => l.Id == 5);
+			var lesson1 = await _lessonService.GetLessonByIdAsync(5);
 			Content = lesson1?.Content ?? " онтент не найден";
 		}
 	}
