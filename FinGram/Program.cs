@@ -28,6 +28,9 @@ builder.Services.AddScoped<CourseService>();
 builder.Services.AddScoped<LessonService>();
 builder.Services.AddScoped<TestService>();
 
+builder.Services.AddHostedService<TelegramBotService>();
+
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
