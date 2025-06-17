@@ -1,16 +1,15 @@
 ﻿@page
-@model FinGram.Pages.Lesson_2Model
+@model FinGram.Pages.Summary1Model
 @{
-	ViewData["Title"] = "Урок";
-	var paragraphs = Model.Content?.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries) ?? Array.Empty<string>();
+	ViewData["Title"] = "Конспект темы";
 }
 
 <div class="program-container">
 	<div class="navigation">
 		<li><a href="/Lesson1_1">1.1 Что такое бюджет и зачем он нужен</a></li>
-		<li><a href="/Lesson1_2" class="active-link2">1.2 Учёт доходов, расходов и правило 50/30/20</a></li>
+		<li><a href="/Lesson1_2">1.2 Учёт доходов, расходов и правило 50/30/20</a></li>
 		<li><a href="/Lesson1_3">1.3 Формирование подушки безопасности и непредвиденные расходы</a></li>
-		<li><a href="/Summary1">Конспект темы 1</a></li>
+		<li><a href="/Summary1" class="active-link1">Конспект темы 1</a></li>
 		<li><a href="/Test1">Тест по теме "Основы личного бюджета и планирования"</a></li>
 		<li><a href="/Lesson2_1">2.1 Банковские продукты: вклады, кредиты и комиссии</a></li>
 		<li><a href="/Lesson2_2">2.2 Карты: дебетовые vs кредитные</a></li>
@@ -24,17 +23,24 @@
 	<div class="program">
 		<h2>Содержание</h2>
 
-		@foreach (var paragraph in paragraphs)
+		@{
+			var lessonParagraphs = Model.Content?.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries) ?? Array.Empty<string>();
+		}
+		@foreach (var paragraph in lessonParagraphs)
 		{
-			if (paragraph.Contains("Что такое доходы и расходы и как их учитывать"))
+			if (paragraph.Contains("Зачем нужен бюджет:"))
 			{
 				<p class="important">@paragraph</p>
 			}
-			else if (paragraph.Contains("Зачем всё это — и как оценить, хорошо ли распределены деньги"))
+			else if (paragraph.Contains("Эффективный бюджет:"))
 			{
 				<p class="important">@paragraph</p>
 			}
-			else if (paragraph.Contains("Как начать прямо сейчас"))
+			else if (paragraph.Contains("Правило 50/30/20 — простая модель:"))
+			{
+				<p class="important">@paragraph</p>
+			}
+			else if (paragraph.Contains("Рекомендации:"))
 			{
 				<p class="important">@paragraph</p>
 			}
@@ -42,6 +48,11 @@
 			{
 				<p>@paragraph</p>
 			}
-		}
+		}	
 	</div>
+</div>
+
+<div class="download-section"<>
+	<p>Сделали для вас конспект темы в pdf-файле, чтобы он всегда был под рукой</p>
+	<a href="/images/Summary2.pdf" download class="btn btn-primary" id="download-button">Скачать конспект в PDF</a>
 </div>
