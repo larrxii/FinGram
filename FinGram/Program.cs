@@ -25,6 +25,9 @@ builder.Services.AddIdentity<User, IdentityRole<int>>()
     .AddDefaultTokenProviders();
 
 builder.Services.AddRazorPages();
+builder.Services.AddScoped<CourseService>();
+builder.Services.AddScoped<LessonService>();
+builder.Services.AddScoped<TestService>();
 
 builder.Services.AddHostedService<TelegramBotService>();
 

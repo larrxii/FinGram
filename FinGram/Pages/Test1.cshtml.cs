@@ -1,52 +1,53 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using FinGram.Data;
 using FinGram.Models;
-using Microsoft.EntityFrameworkCore;
+using FinGram.Services;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 namespace FinGram.Pages
 {
 	public class Test1Model : PageModel
 	{
-		private readonly AppDbContext _context;
+		private readonly TestService _testService;
+		private readonly UserManager<User> _userManager;
 
-		public Test1Model(AppDbContext context)
+		public Test1Model(TestService testService, UserManager<User> userManager)
 		{
-			_context = context;
+			_testService = testService;
+			_userManager = userManager;
 		}
 
 		public List<Question> QuestionsWithAnswers { get; set; }
 
 		[BindProperty]
-		public Dictionary<int, string> Answers { get; set; } = new();
+		public Dictionary<int, int> Answers { get; set; } = new();
+
+		public int? Score { get; set; } // для показа результата
+		public int TotalQuestions { get; set; }
 
 		public async Task OnGetAsync()
 		{
-			QuestionsWithAnswers = await _context.Questions
-				.Where(q => q.TestId == 2)
-				.Select(q => new Question
-				{
-					Id = q.Id,
-					Text = q.Text,
-					Answers = _context.Answers.Where(a => a.QuestionId == q.Id).ToList()
-				}).ToListAsync();
+			QuestionsWithAnswers = await _testService.GetQuestionsByTestIdAsync(2);
+			TotalQuestions = QuestionsWithAnswers.Count;
 		}
 
-		//public async Task<IActionResult> OnPostAsync()
-		//{
-		//	foreach (var entry in Answers)
-		//	{
-		//		var userAnswer = new UserTestResult
-		//		{
-		//			Id = entry.Key,
-		//			CompletedAt = DateTime.UtcNow
-		//		};
+		public async Task<IActionResult> OnPostAsync()
+		{
+			QuestionsWithAnswers = await _testService.GetQuestionsByTestIdAsync(2);
+			TotalQuestions = QuestionsWithAnswers.Count;
 
-		//		_context.UserTestResults.Add(userAnswer);
-		//	}
+			Score = await _testService.EvaluateTestAsync(2, Answers);
 
-		//	await _context.SaveChangesAsync();
-		//	return RedirectToPage("/TestSubmitted");
-		//}
+			// сохранение реза в бд
+			var user = await _userManager.GetUserAsync(User);
+			if (user != null)
+			{
+				await _testService.SaveTestResultAsync(user.Id, 2, Score.Value);
+			}
+
+			return Page();
+		}
 	}
 }
