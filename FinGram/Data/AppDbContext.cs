@@ -22,6 +22,8 @@ namespace FinGram.Data
         public DbSet<UserTestResult> UserTestResults { get; set; }
         public DbSet<Certificate> Certificates { get; set; }
 
+        public DbSet<TelegramLink> TelegramLinks { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -96,6 +98,10 @@ namespace FinGram.Data
                 .HasOne(c => c.User)
                 .WithMany(u => u.Certificates)
                 .HasForeignKey(c => c.UserId);
+
+            modelBuilder.Entity<TelegramLink>()
+                .HasIndex(x => x.Token)
+                .IsUnique();
         }
     }
 }
