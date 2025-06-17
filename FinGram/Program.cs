@@ -1,6 +1,7 @@
 using FinGram.Data;
 using FinGram.Models;
 using FinGram.Services;
+using FinGram.Pages.API;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -45,5 +46,27 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.MapPost("/api/telegramauth", async (AppDbContext db, TelegramAuthModel.TelegramAuthRequest request) =>
+{
+    var link = await db.TelegramLinks
+        .Include(x => x.User)
+        .FirstOrDefaultAsync(x => x.Token == request.Token /* && !x.IsUsed */);
+
+    if (link == null)
+        return Results.NotFound(new { error = "Invalid or used token." });
+
+    link.TelegramId = request.TelegramId;
+    link.IsUsed = true;
+    await db.SaveChangesAsync();
+
+    return Results.Json(new
+    {
+        userId = link.UserId,
+        userName = link.User.UserName,
+        email = link.User.Email
+    });
+});
+
 
 app.Run();

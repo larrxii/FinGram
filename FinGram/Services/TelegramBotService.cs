@@ -62,7 +62,7 @@ namespace FinGram.Services
             }
 
             string token = args[1];
-            long telegramId = message.Chat.Id;
+            int telegramId = (int)message.Chat.Id;
 
             var request = new
             {
@@ -74,7 +74,7 @@ namespace FinGram.Services
 
             try
             {
-                var response = await client.PostAsJsonAsync("https://yourdomain.com/api/telegramauth", request);
+                var response = await client.PostAsJsonAsync("https://localhost:7190/api/telegramauth", request);
                 if (response.IsSuccessStatusCode)
                 {
                     var result = await response.Content.ReadFromJsonAsync<TelegramAuthResponse>();
@@ -107,7 +107,7 @@ namespace FinGram.Services
         private class TelegramAuthResponse
         {
             [JsonPropertyName("userId")]
-            public string UserId { get; set; }
+            public int UserId { get; set; }
 
             [JsonPropertyName("userName")]
             public string UserName { get; set; }
