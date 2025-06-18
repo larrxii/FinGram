@@ -76,6 +76,35 @@ namespace FinGram.Services
 				await _context.UserTestResults.AddAsync(result);
 			}
 
+			var test = await _context.Tests
+			.Include(t => t.Course)
+			.FirstOrDefaultAsync(t => t.Id == testId);
+
+			if (test != null && test.CourseId != null)
+			{
+				var lessonsInCourse = await _context.Lessons
+					.Where(l => l.CourseId == test.CourseId)
+					.ToListAsync();
+
+				var passedLessonIds = await _context.UserLessons
+					.Where(ul => ul.UserId == userId)
+					.Select(ul => ul.LessonId)
+					.ToListAsync();
+
+				var newLessons = lessonsInCourse
+					.Where(l => !passedLessonIds.Contains(l.Id))
+					.ToList();
+
+				foreach (var lesson in newLessons)
+				{
+					_context.UserLessons.Add(new UserLesson
+					{
+						UserId = userId,
+						LessonId = lesson.Id
+					});
+				}
+			}
+
 			await _context.SaveChangesAsync();
 		}
 

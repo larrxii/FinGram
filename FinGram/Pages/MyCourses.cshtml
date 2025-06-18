@@ -9,24 +9,24 @@
     <h1>Мое обучение</h1>
     <div class="my-courses-content">
 
-        
+
         <div class="statistics-card left">
             <h1>Финансовая грамотность для всех</h1>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width:60%"></div>
-                </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width:60%"></div>
+            </div>
             <p style="margin-bottom: 4px;">@Model.ProgressPercent% материалов пройдено</p>
             <p style="margin-top: 0;">@Model.CurrentPoints/@Model.MaxPoints баллов получено</p>
-                @if (Model.IsCertificateEligible)
-                {
-                    <p class="last">🎉 Сертификат получен!</p>
-                }
-                else
-                {
-                    <p class="last">@(Model.MaxPoints / 2 - Model.CurrentPoints) баллов до сертификата</p>
-                }
+            @if (Model.IsCertificateEligible)
+            {
+                <p class="last">🎉 Сертификат получен!</p>
+            }
+            else
+            {
+                <p class="last">@(Model.MaxPoints / 2 - Model.CurrentPoints) баллов до сертификата</p>
+            }
             <a asp-page="/CourseProgram" class="btn-continue">Продолжить</a>
-            </div>
+        </div>
         <div class="statistics-card right">
             <p class="first">2 дня без перерыва</p>
             <p class="second">Рекорд — 5 дней</p>
@@ -39,20 +39,26 @@
             </div>
 
             <div class="task-reminder">
-				<img src="~/images/star.png" alt="star-img">
+                <img src="~/images/star.png" alt="star-img">
                 <p>Решите сегодня хотя бы одну задачу</p>
             </div>
-            
+
             <!--
-			<p><strong>Model.DaysInARow</strong> дня без перерыва</p>
-			<p>Рекорд — <strong>Model.BestStreak</strong> дней</p>
-			<p><strong>Model.TasksSolved</strong> задач решено</p>
-			<p><strong>Model.TasksRemaining</strong> задача осталась</p>
+            <p><strong>Model.DaysInARow</strong> дня без перерыва</p>
+            <p>Рекорд — <strong>Model.BestStreak</strong> дней</p>
+            <p><strong>Model.TasksSolved</strong> задач решено</p>
+            <p><strong>Model.TasksRemaining</strong> задача осталась</p>
             -->  
         </div>
-	</div>
+    </div>
 
-    <div class="motivation-text">
-		<h1>Некий вдохновляющий текст, который надо придумать</h1>
+    @if (Model.IsCertificateEligible)
+    {
+         <div class="motivation-text">
+		<h1>Поздравляем с прохождением курса!</h1>
+        <h2>Ваш сертификат</h2>
+            <a asp-page="/Certificate" class="btn btn-primary">Скачать PDF</a>
 	</div>
+    }
+   
 </div>

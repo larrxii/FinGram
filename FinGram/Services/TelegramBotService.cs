@@ -5,6 +5,9 @@ using Telegram.Bot.Exceptions;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using FinGram.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinGram.Services
 {
@@ -45,6 +48,10 @@ namespace FinGram.Services
             if (message.Text.StartsWith("/start"))
             {
                 await HandleStartCommand(bot, message);
+            }
+            else if (message.Text == "/stats")
+            {
+                await HandleStatsCommand(bot, message);
             }
             else
             {
@@ -102,6 +109,44 @@ namespace FinGram.Services
 
             _logger.LogError(errorMessage);
             return Task.CompletedTask;
+        }
+
+        private async Task HandleStatsCommand(ITelegramBotClient bot, Message message)
+        {
+            using var scope = Program.ServiceProvider.CreateScope();
+            var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+            var telegramId = (int)message.Chat.Id;
+            var userLink = await context.TelegramLinks
+                .Include(x => x.User)
+                .FirstOrDefaultAsync(x => x.TelegramId == telegramId);
+
+            if (userLink?.User == null)
+            {
+                await bot.SendTextMessageAsync(telegramId, "Вы не авторизованы. Используйте ссылку из личного кабинета.");
+                return;
+            }
+
+            var userId = userLink.UserId;
+
+            var userResults = await context.UserTestResults
+                .Where(r => r.UserId == userId)
+                .ToListAsync();
+
+            int currentPoints = userResults.Sum(r => r.Score);
+            int maxPoints = await context.Questions.CountAsync();
+
+            int lessonsPassed = await context.UserLessons
+                .CountAsync(ul => ul.UserId == userId);
+
+            int pointsToCertificate = Math.Max((int)Math.Ceiling(maxPoints / 2.0) - currentPoints, 0);
+
+            string response = $"\uD83D\uDCCA Ваша статистика:\n\n" +
+                              $"\u2705 Пройдено уроков: {lessonsPassed}\n" +
+                              $"\uD83C\uDFAF Баллы за тесты: {currentPoints} / {maxPoints}\n" +
+                              $"\uD83C\uDFC5 Осталось до сертификата: {pointsToCertificate} баллов";
+
+            await bot.SendTextMessageAsync(telegramId, response);
         }
 
         private class TelegramAuthResponse

@@ -12,6 +12,7 @@ namespace FinGram.Pages
         private readonly AppDbContext _context;
         private readonly UserManager<User> _userManager;
 
+
         public MyCoursesModel(AppDbContext context, UserManager<User> userManager)
         {
             _context = context;
