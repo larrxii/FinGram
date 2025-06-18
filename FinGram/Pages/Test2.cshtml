@@ -4,26 +4,6 @@
 	ViewData["Title"] = "Тестирование";
 }
 
-
-@if (Model.Score.HasValue)
-{
-	<div class="result-message">
-		<p>Вы набрали: <strong>@Model.Score из @Model.TotalQuestions</strong> баллов</p>
-		@if (Model.Score == Model.TotalQuestions)
-		{
-			<p>Поздравляем! Вы прошли тест на 100%</p>
-		}
-		else if (Model.Score >= Model.TotalQuestions / 2)
-		{
-			<p>Хороший результат! Попробуйте пройти снова для улучшения!</p>
-		}
-		else
-		{
-			<p>Увы! Вам стоит ещё раз пройти материалы темы:(</p>
-		}
-	</div>
-}
-
 <div class="test-container">
 	<div class="navigation">
 		<li><a href="/Lesson1_1">1.1 Что такое бюджет и зачем он нужен</a></li>
@@ -41,12 +21,31 @@
 	</div>
 
 	<div class="test">
-		<h2>Тест по теме "Основы личного бюджета и планирования"</h2>
+		<h2>Тест по теме "Финансовые инструменты и безопасность"</h2>
 		<p class="test-text">
 			При работе над тестом будьте внимательны! Помните, что вопросы содержат только 1 правильный ответ.
 			Если у вас нет уверенности в своих знаниях, ознакомьтесь еще раз с конспектом по теме.
 			<br>Желаем удачи!
 		</p>
+
+		@if (Model.Score.HasValue)
+		{
+			<div class="result-message">
+				<p id="text-result"><strong>@Model.Score из @Model.TotalQuestions</strong></p>
+				@if (Model.Score == Model.TotalQuestions)
+				{
+					<p>Поздравляем! Вы прошли тест на 100%</p>
+				}
+				else if (Model.Score >= Model.TotalQuestions / 2)
+				{
+					<p>Хороший результат! Попробуйте пройти снова для улучшения!</p>
+				}
+				else
+				{
+					<p>Увы! Вам стоит ещё раз пройти материалы темы:(</p>
+				}
+			</div>
+		}
 
 		<form method="post">
 			@foreach (var question in Model.QuestionsWithAnswers)
