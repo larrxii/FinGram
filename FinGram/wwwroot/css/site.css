@@ -652,7 +652,7 @@ span {
     .button-row {
         display: flex;
         gap:10px;
-        margin-left: 365px;
+        margin-left: 630px;
     }
 
     button.btn-edit.btn.btn-primary {
@@ -753,7 +753,7 @@ span {
             text-decoration: none;
         }
 
-        button.btn-connectnotice.btn.btn-secondary {
+        a.btn-connectnotice.btn.btn-secondary {
             font-family: "Raleway", sans-serif;
             font-weight: 400;
             padding: 8px 16px;

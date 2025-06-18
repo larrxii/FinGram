@@ -16,11 +16,17 @@ namespace FinGram.Services
         private readonly ILogger<TelegramBotService> _logger;
         private readonly IConfiguration _configuration;
         private TelegramBotClient _botClient;
+        private readonly IServiceProvider _serviceProvider;
 
-        public TelegramBotService(ILogger<TelegramBotService> logger, IConfiguration configuration)
+
+        public TelegramBotService(
+    ILogger<TelegramBotService> logger,
+    IConfiguration configuration,
+    IServiceProvider serviceProvider)
         {
             _logger = logger;
             _configuration = configuration;
+            _serviceProvider = serviceProvider;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -51,7 +57,9 @@ namespace FinGram.Services
             }
             else if (message.Text == "/stats")
             {
+                _logger.LogInformation("🔎 Вызвана команда /stats от {ChatId}", message.Chat.Id);
                 await HandleStatsCommand(bot, message);
+                _logger.LogInformation("✅ Обработка /stats завершена");
             }
             else
             {
@@ -113,7 +121,8 @@ namespace FinGram.Services
 
         private async Task HandleStatsCommand(ITelegramBotClient bot, Message message)
         {
-            using var scope = Program.ServiceProvider.CreateScope();
+            using var scope = _serviceProvider.CreateScope();
+
             var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 
             var telegramId = (int)message.Chat.Id;
@@ -129,22 +138,30 @@ namespace FinGram.Services
 
             var userId = userLink.UserId;
 
+            var allTests = await context.Tests.Include(t => t.Questions).ToListAsync();
+            int maxPoints = allTests.Sum(t => t.Questions.Count);
+
             var userResults = await context.UserTestResults
                 .Where(r => r.UserId == userId)
+                .Include(r => r.Test)
                 .ToListAsync();
 
             int currentPoints = userResults.Sum(r => r.Score);
-            int maxPoints = await context.Questions.CountAsync();
+            bool hasPassedFinal = userResults.Any(r => r.Test.IsFinal);
 
-            int lessonsPassed = await context.UserLessons
-                .CountAsync(ul => ul.UserId == userId);
+            int allLessons = await context.Lessons.CountAsync();
+            int userLessons = await context.UserLessons.CountAsync(ul => ul.UserId == userId);
+            int progressPercent = allLessons > 0 ? (int)((double)userLessons / allLessons * 100) : 0;
 
-            int pointsToCertificate = Math.Max((int)Math.Ceiling(maxPoints / 2.0) - currentPoints, 0);
+            int pointsToCertificate = maxPoints > 0 ? Math.Max((maxPoints / 2) - currentPoints, 0) : 0;
+            bool eligible = maxPoints > 0 && currentPoints >= maxPoints / 2 && hasPassedFinal;
 
             string response = $"\uD83D\uDCCA Ваша статистика:\n\n" +
-                              $"\u2705 Пройдено уроков: {lessonsPassed}\n" +
+                              $"\u2705 Пройдено уроков: {userLessons} из {allLessons} ({progressPercent}%)\n" +
                               $"\uD83C\uDFAF Баллы за тесты: {currentPoints} / {maxPoints}\n" +
-                              $"\uD83C\uDFC5 Осталось до сертификата: {pointsToCertificate} баллов";
+                              (eligible
+                                  ? "\uD83C\uDF89 Вы можете получить сертификат!"
+                                  : $"\uD83C\uDFC5 Осталось до сертификата: {pointsToCertificate} баллов");
 
             await bot.SendTextMessageAsync(telegramId, response);
         }

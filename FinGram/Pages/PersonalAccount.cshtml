@@ -13,7 +13,6 @@
 		<p>@Model.Email</p>
 	</div>
 	<div class="button-row">
-		<button class="btn-edit btn btn-primary">Редактировать профиль</button>
 		<form method="post" asp-page-handler="Logout" asp-page="/Login">
 			<button type="submit" class="btn-logout btn btn-danger">выйти</button>
 		</form>
@@ -26,21 +25,16 @@
 		<p>
 			Время на платформе: <strong>@Model.DaysSinceRegistration</strong> дней<br>
 			Уроков пройдено: <strong>@Model.LessonsCompletedCount</strong><br>
-			Средний балл: 
 		</p>
 	</div>
 
 	<div class="personal-account notice">
-		<h1>Подключите уведомления в Telegram</h1>
-		<p>Получайте сообщения о новых уроках удобным способом.</p>
+		<h1>Ваш финансовый ассистент в Telegram</h1>
+		<p>Получайте сообщения о вашем прогрессе удобным способом</p>
 		<a class="btn btn-secondary btn-connectnotice" href="@Model.TelegramLink" target="_blank">
-			Подключить уведомления
+			FinGram Assist Bot
 		</a>
 	</div>
-</div>
-
-<div class="container-btn-feedback">
-    <button class="btn-feedback btn btn-info ">Оставить отзыв о курсе</button>
 </div>
 
 @section Scripts {

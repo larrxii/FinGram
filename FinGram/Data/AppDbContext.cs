@@ -24,6 +24,7 @@ namespace FinGram.Data
 
         public DbSet<TelegramLink> TelegramLinks { get; set; }
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

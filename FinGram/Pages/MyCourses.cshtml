@@ -28,20 +28,21 @@
             <a asp-page="/CourseProgram" class="btn-continue">Продолжить</a>
         </div>
         <div class="statistics-card right">
-            <p class="first">2 дня без перерыва</p>
-            <p class="second">Рекорд — 5 дней</p>
+            <p class="first">Деньги —</p>
+            @* <p class="first">2 дня без перерыва</p> *@
+            <p class="second">это не цель, а инструмент для того, чтобы жить жизнью, которую ты заслуживаешь</p>
 
-            <div class="row-text">
-                <p>
-                    <span class="highlight-number">22</span>задач решено
-                    <span class="highlight-number second">31</span>задач осталась
-                </p>
-            </div>
+            @* <div class="row-text"> *@
+            @*     <p> *@
+            @*         <span class="highlight-number">22</span>задач решено *@
+            @*         <span class="highlight-number second">31</span>задач осталась *@
+            @*     </p> *@
+            @* </div> *@
 
-            <div class="task-reminder">
-                <img src="~/images/star.png" alt="star-img">
-                <p>Решите сегодня хотя бы одну задачу</p>
-            </div>
+            @* <div class="task-reminder"> *@
+            @*     <img src="~/images/star.png" alt="star-img"> *@
+            @*     <p>Решите сегодня хотя бы одну задачу</p> *@
+            @* </div> *@
 
             <!--
             <p><strong>Model.DaysInARow</strong> дня без перерыва</p>
@@ -55,9 +56,8 @@
     @if (Model.IsCertificateEligible)
     {
          <div class="motivation-text">
-		<h1>Поздравляем с прохождением курса!</h1>
-        <h2>Ваш сертификат</h2>
-            <a asp-page="/Certificate" class="btn btn-primary">Скачать PDF</a>
+		<h1>Поздравляем с прохождением курса!<br /></h1>
+            <a asp-page="/Certificate" class="btn btn-primary" style="margin-top:50px">Скачать сертификат</a>
 	</div>
     }
    

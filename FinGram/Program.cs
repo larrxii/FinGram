@@ -82,8 +82,6 @@ namespace FinGram
                 });
             });
 
-           
-
             app.Run();
         }
     }
