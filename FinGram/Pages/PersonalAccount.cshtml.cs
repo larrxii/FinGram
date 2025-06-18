@@ -27,6 +27,9 @@ namespace FinGram.Pages
 
         public string TelegramLink { get; set; }
 
+        public int DaysSinceRegistration { get; set; }
+        public int LessonsCompletedCount { get; set; }
+
         public async Task<IActionResult> OnGetAsync()
         {
             var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -42,6 +45,9 @@ namespace FinGram.Pages
             FirstName = user.FirstName;
             LastName = user.LastName;
             Email = user.Email;
+
+            DaysSinceRegistration = (DateTime.UtcNow - user.CreatedAt).Days;
+            LessonsCompletedCount = _context.UserLessons.Count(ul => ul.UserId == userId);
 
             var existing = _context.TelegramLinks.FirstOrDefault(t => t.UserId == userId && !t.IsUsed);
 

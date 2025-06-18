@@ -9,24 +9,24 @@
     <h1>Мое обучение</h1>
     <div class="my-courses-content">
 
+        
         <div class="statistics-card left">
             <h1>Финансовая грамотность для всех</h1>
-
-            <div class="progress-bar">
-                <div class="progress-fill" style="width:60%;"></div>
-            </div>
-
-            <p style="margin-bottom: 4px;">6% материалов пройдено</p>
-            <p style="margin-top: 0;">6/100 баллов получено</p>
-             <!--
-			 <p>ProgressPercent% материалов пройдено</p>
-			 <p>CurrentPoints/MaxPoints баллов получено</p>
-             -->
-            <p class ="last">Осталось 67 баллов<br>до сертификата</p>
-			<!--<p>Осталось MaxPoints-CurrentPoints баллов до сертификата</p>-->
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width:60%"></div>
+                </div>
+            <p style="margin-bottom: 4px;">@Model.ProgressPercent% материалов пройдено</p>
+            <p style="margin-top: 0;">@Model.CurrentPoints/@Model.MaxPoints баллов получено</p>
+                @if (Model.IsCertificateEligible)
+                {
+                    <p class="last">🎉 Сертификат получен!</p>
+                }
+                else
+                {
+                    <p class="last">@(Model.MaxPoints / 2 - Model.CurrentPoints) баллов до сертификата</p>
+                }
             <a asp-page="/CourseProgram" class="btn-continue">Продолжить</a>
-        </div>
-
+            </div>
         <div class="statistics-card right">
             <p class="first">2 дня без перерыва</p>
             <p class="second">Рекорд — 5 дней</p>
