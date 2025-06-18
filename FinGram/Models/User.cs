@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-
 namespace FinGram.Models
 {
     public class User : IdentityUser<int>
