@@ -1295,6 +1295,12 @@ span {
     font-size: 33px;
 }
 
+.test-text {
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+}
+
 /* Test 2 */
 .navigation a.active-link-test2 {
     background-color: #D0D9FF;
